@@ -44,3 +44,41 @@ const galleryItems = [{
         description: "Lighthouse Coast Sea",
     },
 ];
+const galleryEl = document.querySelector(".gallery");
+const linkEl = document.querySelector(".gallery__link");
+const lightboxEL = document.querySelector(".js-lightbox");
+const lightboxImageEl = document.querySelector(".lightbox__image");
+const buttonModalCloseEl = lightboxEL.querySelector(".lightbox__button");
+const lightboxOverlayEl = document.querySelector(".lightbox__overlay");
+
+const createGalleryItem = (images) => {
+    let string = "";
+    images.forEach(({ preview, original, description }) => {
+        string += `<li class="gallery__item">
+      <a
+        class="gallery__link"
+        href="${original}"
+      >
+        <img
+          class="gallery__image"
+          src="${preview}"
+          data-source="${original}"
+          alt="${description}"
+        />
+      </a>
+    </li>`;
+    });
+    return string;
+};
+
+const listGalleryItem = createGalleryItem(galleryItems);
+galleryEl.insertAdjacentHTML("afterbegin", listGalleryItem);
+
+galleryEl.addEventListener("click", onClick);
+buttonModalCloseEl.addEventListener("click", closeModal);
+lightboxOverlayEl.addEventListener("click", closeModal);
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightboxEL.classList.contains("is-open")) {
+        closeModal();
+    }
+});
