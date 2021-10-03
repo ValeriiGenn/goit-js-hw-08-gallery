@@ -74,11 +74,11 @@ const createGalleryItem = (images) => {
 const listGalleryItem = createGalleryItem(galleryItems);
 galleryEl.insertAdjacentHTML("afterbegin", listGalleryItem);
 
-galleryEl.addEventListener("click", onClick);
+/*galleryEl.addEventListener("click", onClick);
 buttonModalCloseEl.addEventListener("click", closeModal);
 lightboxOverlayEl.addEventListener("click", closeModal);
 window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && lightboxEL.classList.contains("is-open")) {
         closeModal();
     }
-});
+});*/
