@@ -82,3 +82,51 @@ window.addEventListener("keydown", (e) => {
         closeModal();
     }
 });
+
+function onClick(e) {
+    e.preventDefault();
+    if (e.target.nodeName !== "IMG") {
+        return;
+    }
+    lightboxEL.classList.add("is-open");
+    lightboxImageEl.src = e.target.dataset.source;
+    lightboxImageEl.alt = e.target.alt;
+}
+
+function closeModal() {
+    lightboxEL.classList.remove("is-open");
+    lightboxImageEl.src = "#";
+    lightboxImageEl.alt = "#";
+}
+
+const dataSources = galleryItems.map((galleryItem) => {
+    return galleryItem.original;
+});
+
+document.addEventListener("keydown", (e) => {
+    if (!lightboxEL.classList.contains("is-open")) {
+        return;
+    }
+    const curentIndex = dataSources.indexOf(lightboxImageEl.src);
+    if (e.key === "ArrowLeft") {
+        leftClick(curentIndex);
+    } else if (e.key === "ArrowRight") {
+        rightClick(curentIndex);
+    }
+});
+
+function leftClick(curentIndex) {
+    let nextIndex = curentIndex - 1;
+    if (nextIndex === -1) {
+        nextIndex = dataSources.length - 1;
+    }
+    lightboxImageEl.src = dataSources[nextIndex];
+}
+
+function rightClick(curentIndex) {
+    let nextIndex = curentIndex + 1;
+    if (nextIndex === dataSources.length) {
+        nextIndex = 0;
+    }
+    lightboxImageEl.src = dataSources[nextIndex];
+}
