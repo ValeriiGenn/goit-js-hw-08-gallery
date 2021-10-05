@@ -103,18 +103,6 @@ const dataSources = galleryItems.map((galleryItem) => {
     return galleryItem.original;
 });
 
-document.addEventListener("keydown", (e) => {
-    if (!lightboxEL.classList.contains("is-open")) {
-        return;
-    }
-    const curentIndex = dataSources.indexOf(lightboxImageEl.src);
-    if (e.key === "ArrowLeft") {
-        leftClick(curentIndex);
-    } else if (e.key === "ArrowRight") {
-        rightClick(curentIndex);
-    }
-});
-
 function leftClick(curentIndex) {
     let nextIndex = curentIndex - 1;
     if (nextIndex === -1) {
