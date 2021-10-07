@@ -1,4 +1,4 @@
-const galleryItems = [{
+export default [{
         preview: "https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg",
         original: "https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825_1280.jpg",
         description: "Hokkaido Flower",
@@ -44,7 +44,7 @@ const galleryItems = [{
         description: "Lighthouse Coast Sea",
     },
 ];
-const galleryEl = document.querySelector(".gallery");
+/*const galleryEl = document.querySelector(".gallery");
 const linkEl = document.querySelector(".gallery__link");
 const lightboxEL = document.querySelector(".js-lightbox");
 const lightboxImageEl = document.querySelector(".lightbox__image");
@@ -117,4 +117,4 @@ function rightClick(curentIndex) {
         nextIndex = 0;
     }
     lightboxImageEl.src = dataSources[nextIndex];
-}
+}*/
